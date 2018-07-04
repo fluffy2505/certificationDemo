@@ -1,11 +1,15 @@
 package com.example.demo.model;
 
+import java.util.List;
+
 public class Employee {
 	int employeeID;
 	String firstname;
 	String lastname;
 	String email;
 	String phone;
+	
+	List<Qualification> quas;   /* ??? */
 	
 	
 	//Constructor
