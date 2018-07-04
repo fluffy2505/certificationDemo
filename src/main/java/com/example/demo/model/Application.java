@@ -1,10 +1,10 @@
 package com.example.demo.model;
 
 public class Application {
-	int applicationID;
-	int employeeID;
-	boolean reCertificated;
-	int repeated;
+	private int applicationID;
+	private int employeeID;
+	private boolean reCertificated;
+	private int repeated;
 	
 	public Application(int employeeID, boolean reCertificated, int repeated) {
 		super();

@@ -3,11 +3,11 @@ package com.example.demo.model;
 import java.util.List;
 
 public class Employee {
-	int employeeID;
-	String firstname;
-	String lastname;
-	String email;
-	String phone;
+	private int employeeID;
+	private String firstname;
+	private String lastname;
+	private String email;
+	private String phone;
 	
 	List<Qualification> quas;   /* ??? */
 	

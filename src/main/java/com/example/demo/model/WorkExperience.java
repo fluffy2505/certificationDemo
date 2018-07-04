@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class WorkExperience {
 
-	int employeeID;
-	int workExperienceID;
-	Date startDate;
-	Date endDate;
-	String jobTilte;
-	String jobDuty;
-	String result;
+	private int employeeID;
+	private int workExperienceID;
+	private Date startDate;
+	private Date endDate;
+	private String jobTilte;
+	private String jobDuty;
+	private String result;
 
 	public WorkExperience() {
 		super();

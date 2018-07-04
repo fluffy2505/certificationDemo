@@ -3,10 +3,10 @@ package com.example.demo.model;
 enum qType {CERTIFICATION, QUALIFICATION}
 
 public class Qualification {
-	int qualificationID;
-	qType type;
-	String desc;
-	int level;
+	private int qualificationID;
+	private qType type;
+	private String desc;
+	private int level;
 	
 	
 	public Qualification(int qualificationID, qType type, String desc, int level) {
