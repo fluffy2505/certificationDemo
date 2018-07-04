@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import java.util.Date;
 import java.util.List;
 
 public class Employee {
@@ -8,18 +9,24 @@ public class Employee {
 	private String lastname;
 	private String email;
 	private String phone;
+	private Date startDate;
 	
 	List<Qualification> quas;   /* ??? */
 	
 	
 	//Constructor
-	public Employee(int employeeID, String firstname, String lastname, String email, String phone) {
+	public Employee(int employeeID, String firstname, String lastname, String email, String phone, Date startDate) {
 		super();
 		this.employeeID = employeeID;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
 		this.phone = phone;
+		this.startDate = startDate;
+	}
+
+	public String getEmail() {
+		return email;
 	}
 
 
@@ -28,18 +35,8 @@ public class Employee {
 	}
 
 
-	public void setEmployeeID(int employeeID) {
-		this.employeeID = employeeID;
-	}
-
-
 	public String getFirstname() {
 		return firstname;
-	}
-
-
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
 	}
 
 
@@ -48,13 +45,13 @@ public class Employee {
 	}
 
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public String getPhone() {
+		return phone;
 	}
 
 
-	public String getEmail() {
-		return email;
+	public Date getStartDate() {
+		return startDate;
 	}
 
 
@@ -63,15 +60,27 @@ public class Employee {
 	}
 
 
-	public String getPhone() {
-		return phone;
+	public void setEmployeeID(int employeeID) {
+		this.employeeID = employeeID;
+	}
+
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
-	
-	
+
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
 }
