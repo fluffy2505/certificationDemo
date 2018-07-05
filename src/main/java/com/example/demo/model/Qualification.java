@@ -1,62 +1,65 @@
 package com.example.demo.model;
 
-enum qType {CERTIFICATION, QUALIFICATION}
+import java.io.Serializable;
+import javax.persistence.*;
 
-public class Qualification {
-	private int qualificationID;
-	private qType type;
-	private String desc;
-	private int level;
-	
-	
-	public Qualification(int qualificationID, qType type, String desc, int level) {
-		super();
-		this.qualificationID = qualificationID;
+
+/**
+ * The persistent class for the qualification database table.
+ * 
+ */
+@Entity
+@Table(name="qualification")
+@NamedQuery(name="Qualification.findAll", query="SELECT q FROM Qualification q")
+public class Qualification implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name="qualification_id", unique=true, nullable=false)
+	private int qualificationId;
+
+	@Column(length=45)
+	private String description;
+
+	@Column(name="level_num")
+	private int levelNum;
+
+	@Column(length=5)
+	private String type;
+
+	public Qualification() {
+	}
+
+	public int getQualificationId() {
+		return this.qualificationId;
+	}
+
+	public void setQualificationId(int qualificationId) {
+		this.qualificationId = qualificationId;
+	}
+
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public int getLevelNum() {
+		return this.levelNum;
+	}
+
+	public void setLevelNum(int levelNum) {
+		this.levelNum = levelNum;
+	}
+
+	public String getType() {
+		return this.type;
+	}
+
+	public void setType(String type) {
 		this.type = type;
-		this.desc = desc;
-		this.level = level;
 	}
 
-
-	public int getQualificationID() {
-		return qualificationID;
-	}
-
-
-	public void setQualificationID(int qualificationID) {
-		this.qualificationID = qualificationID;
-	}
-
-
-	public qType getType() {
-		return type;
-	}
-
-
-	public void setType(qType type) {
-		this.type = type;
-	}
-
-
-	public String getDesc() {
-		return desc;
-	}
-
-
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-
-
-	public int getLevel() {
-		return level;
-	}
-
-
-	public void setLevel(int level) {
-		this.level = level;
-	}
-	
-	
-	
 }

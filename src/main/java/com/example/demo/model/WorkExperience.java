@@ -1,87 +1,103 @@
 package com.example.demo.model;
 
+import java.io.Serializable;
+import javax.persistence.*;
 import java.util.Date;
 
-public class WorkExperience {
 
-	private int employeeID;
-	private int workExperienceID;
-	private Date startDate;
+/**
+ * The persistent class for the work_experience database table.
+ * 
+ */
+@Entity
+@Table(name="work_experience")
+@NamedQuery(name="WorkExperience.findAll", query="SELECT w FROM WorkExperience w")
+public class WorkExperience implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name="experience_id", unique=true, nullable=false)
+	private int experienceId;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="end_date")
 	private Date endDate;
-	private String jobTilte;
+
+	@Column(name="job_duty", length=1440)
 	private String jobDuty;
+
+	@Column(name="job_title", length=128)
+	private String jobTitle;
+
+	@Column(length=1440)
 	private String result;
 
+	@Temporal(TemporalType.DATE)
+	@Column(name="start_date")
+	private Date startDate;
+
+	//bi-directional many-to-one association to Employee
+	@ManyToOne
+	@JoinColumn(name="employee_id", nullable=false)
+	private Employee employee;
+
 	public WorkExperience() {
-		super();
 	}
 
-	public WorkExperience(int employeeID, int workExperienceID, Date startDate, Date endDate, String jobTilte,
-			String jobDuty, String result) {
-		super();
-		this.employeeID = employeeID;
-		this.workExperienceID = workExperienceID;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.jobTilte = jobTilte;
-		this.jobDuty = jobDuty;
-		this.result = result;
+	public int getExperienceId() {
+		return this.experienceId;
 	}
 
-	public int getEmployeeID() {
-		return employeeID;
+	public void setExperienceId(int experienceId) {
+		this.experienceId = experienceId;
 	}
 
 	public Date getEndDate() {
-		return endDate;
-	}
-
-	public String getJobDuty() {
-		return jobDuty;
-	}
-
-	public String getJobTilte() {
-		return jobTilte;
-	}
-
-	public String getResult() {
-		return result;
-	}
-
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public int getWorkExperienceID() {
-		return workExperienceID;
-	}
-
-	public void setEmployeeID(int employeeID) {
-		this.employeeID = employeeID;
+		return this.endDate;
 	}
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 
+	public String getJobDuty() {
+		return this.jobDuty;
+	}
+
 	public void setJobDuty(String jobDuty) {
 		this.jobDuty = jobDuty;
 	}
 
-	public void setJobTilte(String jobTilte) {
-		this.jobTilte = jobTilte;
+	public String getJobTitle() {
+		return this.jobTitle;
+	}
+
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
+
+	public String getResult() {
+		return this.result;
 	}
 
 	public void setResult(String result) {
 		this.result = result;
 	}
 
+	public Date getStartDate() {
+		return this.startDate;
+	}
+
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	public void setWorkExperienceID(int workExperienceID) {
-		this.workExperienceID = workExperienceID;
+	public Employee getEmployee() {
+		return this.employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 }
