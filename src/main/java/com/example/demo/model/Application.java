@@ -91,7 +91,7 @@ public class Application implements Serializable {
 
 	//bi-directional many-to-many association to Employee
 	@ManyToMany(mappedBy="applicationData2")
-	private List<Employee> employees;
+	private List<Employee> refEmployees;
 
 	//bi-directional many-to-one association to WorkExperience
 	@OneToMany(mappedBy="applicationData")
@@ -260,12 +260,12 @@ public class Application implements Serializable {
 		this.qualifications = qualifications;
 	}
 
-	public List<Employee> getEmployees() {
-		return this.employees;
+	public List<Employee> getRefEmployees() {
+		return this.refEmployees;
 	}
 
-	public void setEmployees(List<Employee> employees) {
-		this.employees = employees;
+	public void setRefEmployees(List<Employee> refEmployees) {
+		this.refEmployees = refEmployees;
 	}
 
 	public List<WorkExperience> getWorkExperiences() {
