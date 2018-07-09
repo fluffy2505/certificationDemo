@@ -9,6 +9,6 @@ import com.example.demo.model.TemApplication;
 
 public interface TemAppRepository extends JpaRepository<TemApplication, Integer> {
 	
-	@Query(value = "select t from TemApplication tmp where tmp.employeeId = ?1")
+	@Query(value = "select t from TemApplication t where t.employeeId = ?1")
 	List<TemApplication> findByEmployeeID(int employeeID);
 }

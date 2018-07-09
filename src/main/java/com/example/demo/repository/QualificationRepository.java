@@ -9,6 +9,6 @@ import com.example.demo.model.Qualification;
 
 public interface QualificationRepository extends JpaRepository<Qualification, Integer>{
 
-	@Query(value = "select q from Qualification qua where qua.type = ?1")
+	@Query(value = "select q from Qualification q where q.type = ?1")
 	List<Qualification> findByType(String type);
 }
