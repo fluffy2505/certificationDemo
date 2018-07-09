@@ -60,7 +60,7 @@ public class TemAppServiceImpl implements TemAppService {
 	@Override
 	@Transactional
 	public boolean saveTemApplicationService(int employeeID, Application app) {
-		if(aRepo.findById(employeeID)!=null) {
+		if(aRepo.existsById(employeeID)) {
 			tRepo.save(TypeConvertUtils.applcationToTemApplication(employeeID, app));
 			return true;
 		}
@@ -69,8 +69,10 @@ public class TemAppServiceImpl implements TemAppService {
 
 	@Override
 	public boolean deleteTemApplicationService(int employeeID, int temAppID) {
-		if(aRepo.findById(employeeID)!=null) {
-			tRepo.deleteById(temAppID);
+		Optional<TemApplication> ota = tRepo.findById(temAppID);
+		TemApplication temApplication = ota.get();
+		if(aRepo.existsById(employeeID) && temApplication.getEmployeeId()==employeeID) {
+			tRepo.delete(temApplication);
 			return true;
 		}
 		return false;
