@@ -5,9 +5,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +18,6 @@ import com.example.utils.TypeConvertUtils;
 
 @Service
 public class TemAppServiceImpl implements TemAppService {
-	@PersistenceContext
-	private EntityManager em;
 
 	@Autowired
 	private TemAppRepository tRepo;
@@ -32,20 +27,14 @@ public class TemAppServiceImpl implements TemAppService {
 
 	@Override
 	public boolean hasTemApplicationService(int employeeID) {
-		TypedQuery query = em.createQuery("select a from TemApplication tmp"
-				+ " where tmp.employee_id = ?1", TemApplication.class);
-		query.setParameter(1, employeeID);
-		List<TemApplication> tmpApps = query.getResultList();
+		List<TemApplication> tmpApps = tRepo.findByEmployeeID(employeeID);
 		return tmpApps.isEmpty();
 	}
 
 	@Override
 	public Map<Integer, Application> getTemApplicationServices(int employeeID) {
-		// TODO Auto-generated method stub
-		TypedQuery query = em.createQuery("select a from TemApplication tmp"
-				+ " where tmp.employee_id = ?1", TemApplication.class);
-		query.setParameter(1, employeeID);
-		List<TemApplication> tmpApps = query.getResultList();
+		
+		List<TemApplication> tmpApps = tRepo.findByEmployeeID(employeeID);
 		Map<Integer, Application> result = new TreeMap<Integer, Application>();
 		for (TemApplication tmpApp: tmpApps) {
 			// change temApplication to Application
