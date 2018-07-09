@@ -52,36 +52,15 @@ public class AppServiceImpl implements AppService {
 		// TODO change TemApplication to Application
 		
 		
+		
 		return null;
 	}
 
-	
-	// should return Application??
-	@Override
-	public boolean saveTemApplicationService(int employeeID, Application app) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	@Override
 	@Transactional
-	public boolean deleteTemApplicationService(int employeeID, int temAppID) {
-		return false;
-	}
-
-	@Override
-	@Transactional
-	public boolean submitApplicationService(int employeeID, Application app) {
-		// validation
-		if (app.getEmployee().getEmployeeId() != employeeID) return false;
+	public Application submitApplicationService(int employeeID, Application app) {
 		
-		// save app to database
-		try {
-			aRepo.save(app);
-		} catch (Exception e) {
-			return false;
-		}
-		return true;
+		return aRepo.save(app);
 	}
 
 }
