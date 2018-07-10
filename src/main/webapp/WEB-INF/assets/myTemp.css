@@ -1,0 +1,28 @@
+body{
+	background: #406cbf;
+	width:auto;
+	text-align:center;
+}
+
+h1{
+	text-align: center;
+	color: #b8b83d;
+	text-decoration: underline;
+}
+
+label{
+	color:white;
+	font-size:24px;	
+}
+
+.error{
+	color: #ff0000;	
+	
+}
+.errorBlock{
+	color: white;
+	background-color: #ffEEEE;
+	border: 3px solid red;
+	padding: 8px;
+	margin: 16px
+}
