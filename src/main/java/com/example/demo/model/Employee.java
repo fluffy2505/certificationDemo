@@ -1,9 +1,24 @@
 package com.example.demo.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 
 /**
@@ -18,7 +33,9 @@ public class Employee implements Serializable {
 
 	@Id
 	@Column(name="employee_id", unique=true, nullable=false)
-	private int employeeId;
+	@NotNull(message="Employee id field can not be empty")
+	@Min(value=0,message= "can only be a positive number")
+	private Integer employeeId;
 
 	@Column(length=50)
 	private String email;
@@ -30,7 +47,7 @@ public class Employee implements Serializable {
 	private String lastName;
 
 	@Column(name="phone_num")
-	private int phoneNum;
+	private Integer phoneNum;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="start_date")
@@ -60,11 +77,11 @@ public class Employee implements Serializable {
 	public Employee() {
 	}
 
-	public int getEmployeeId() {
+	public Integer getEmployeeId() {
 		return this.employeeId;
 	}
 
-	public void setEmployeeId(int employeeId) {
+	public void setEmployeeId(Integer employeeId) {
 		this.employeeId = employeeId;
 	}
 
@@ -92,11 +109,11 @@ public class Employee implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public int getPhoneNum() {
+	public Integer getPhoneNum() {
 		return this.phoneNum;
 	}
 
-	public void setPhoneNum(int phoneNum) {
+	public void setPhoneNum(Integer phoneNum) {
 		this.phoneNum = phoneNum;
 	}
 
