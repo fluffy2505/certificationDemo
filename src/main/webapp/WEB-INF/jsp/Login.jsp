@@ -12,21 +12,16 @@
 			 -->					
 <meta charset="UTF-8">
 <title>Home Page</title>
-<style>
-.error{
-	color:red;
-}
-</style>
 </head>
 <body>
 	<h1>Employee Login Home Page</h1>
 	<c:url var="next" value="/{arg}" />
 	<form:form modelAttribute="name" action="${next}" >
 		<label>Employee ID:</label>
-		<!-- <form:errors path="*" cssClass="errorBlock" element="div"/>  -->
+		<form:errors path="*" cssClass="errorBlock" element="div"/>
 		
-		<form:input type="number" path="employeeId" cssErrorClass="error" />
-		<form:errors path="employeeId" cssClass="error" />
+		<form:input type="text" path="employeeId" cssErrorClass="error" />
+		<form:errors path="*" cssClass="error" />
 		
 		<br/>
 		<input type="Submit"  value="Login!"/>
